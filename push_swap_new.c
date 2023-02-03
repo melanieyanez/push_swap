@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_new.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
+/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:44:26 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/02/02 20:12:46 by melanieyane      ###   ########.fr       */
+/*   Updated: 2023/02/03 15:57:20 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ t_list	insert_bottom_list(t_list li, int x)
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /* Pour enlever un élément en début de liste */
+/* D'ou viennent les leaks ??? */
 
 t_list	remove_top_list(t_list li)
 {
@@ -158,9 +159,15 @@ t_list	remove_bottom_list(t_list li)
 t_list	clear_list(t_list li)
 {
 	if (is_empty_list(li))
-		return (li);
+	{
+		free (li);
+		return (NULL);
+	}
 	while (li != NULL)
+	{
+		free (li);
 		li = remove_top_list(li);
+	}
 	return (li);
 }
 

@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_instructions.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
+/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 18:34:32 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/02/02 20:17:28 by melanieyane      ###   ########.fr       */
+/*   Updated: 2023/02/03 16:03:35 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Prend le premier élément de la liste source */
+/* pour le mettre au début de la liste de destination */
 
 void	push(ListElement **li_dest, ListElement **li_src)
 {
@@ -20,17 +25,31 @@ void	push(ListElement **li_dest, ListElement **li_src)
 	*li_src = remove_top_list(*li_src);
 }
 
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Décale tous les éléments vers le haut */
+/* Le premier élément devient le dernier */
+
 void	rotate(ListElement **li)
 {
 	*li = insert_bottom_list(*li, (**li).value);
 	*li = remove_top_list(*li);
 }
 
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Décale tous les éléments vers le bas */
+/* Le dernier élément devient le premier */
+
 void	reverse_rotate(ListElement **li)
 {
 	*li = insert_top_list(*li, last_list_value(*li));
 	*li = remove_bottom_list(*li);
 }
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Intervertit les deux premiers éléments de la liste */
 
 void	swap(ListElement **li)
 {
