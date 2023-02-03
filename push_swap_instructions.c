@@ -6,7 +6,7 @@
 /*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 18:34:32 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/02/03 17:04:27 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/02/03 17:51:12 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	push(ListElement **li_dest, ListElement **li_src)
 {
 	if (is_empty_list(*li_src))
 		return ;
-	*li_dest = insert_top_list(*li_dest, (**li_src).value);
+	insert_top_list(li_dest, (**li_src).value);
 	remove_top_list(li_src);
 }
 
@@ -32,7 +32,7 @@ void	push(ListElement **li_dest, ListElement **li_src)
 
 void	rotate(ListElement **li)
 {
-	*li = insert_bottom_list(*li, (**li).value);
+	insert_bottom_list(li, (**li).value);
 	remove_top_list(li);
 }
 
@@ -43,8 +43,8 @@ void	rotate(ListElement **li)
 
 void	reverse_rotate(ListElement **li)
 {
-	*li = insert_top_list(*li, last_list_value(*li));
-	*li = remove_bottom_list(*li);
+	insert_top_list(li, last_list_value(*li));
+	remove_bottom_list(li);
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - */

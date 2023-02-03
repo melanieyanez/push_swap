@@ -6,7 +6,7 @@
 /*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:44:26 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/02/03 17:07:15 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/02/03 17:50:44 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,42 +64,41 @@ void	print_list(t_list li_A, t_list li_B)
 
 /* Pour ajouter un élément en début de liste */
 
-t_list	insert_top_list(t_list li, int x)
+void	insert_top_list(t_list *li, int x)
 {
 	t_list	element;
 
 	element = malloc(sizeof(element));
 	if (element == NULL)
-		return (NULL);
+		return ;
 	element->value = x;
-	if (is_empty_list(li))
+	if (is_empty_list(*li))
 		element->next = NULL;
 	else
-		element->next = li;
-	return (element);
+		element->next = *li;
+	*li = element;
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /* Pour ajouter un élément en fin de liste */
 
-t_list	insert_bottom_list(t_list li, int x)
+void	insert_bottom_list(t_list *li, int x)
 {
 	t_list	element;
 	t_list	temp;
 
 	element = malloc(sizeof(element));
 	if (element == NULL)
-		return (NULL);
+		return ;
 	element->value = x;
 	element->next = NULL;
-	if (is_empty_list(li))
-		return (element);
-	temp = li;
+	if (is_empty_list(*li))
+		return ;
+	temp = *li;
 	while (temp->next != NULL)
 		temp = temp->next;
 	temp->next = element;
-	return (li);
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -122,20 +121,20 @@ void	remove_top_list(t_list *li)
 
 /* Pour enlever un élément en fin de liste */
 
-t_list	remove_bottom_list(t_list li)
+void	remove_bottom_list(t_list *li)
 {
 	t_list	temp;
 	t_list	before;
 
-	temp = li;
-	before = li;
-	if (is_empty_list(li))
-		return (li);
-	if (li->next == NULL)
+	temp = *li;
+	before = *li;
+	if (is_empty_list(*li))
+		return ;
+	if ((*li)->next == NULL)
 	{
-		free(li);
-		li = NULL;
-		return (new_list());
+		free(*li);
+		*li = NULL;
+		return ;
 	}
 	while (temp->next != NULL)
 	{
@@ -145,7 +144,6 @@ t_list	remove_bottom_list(t_list li)
 	before->next = NULL;
 	free(temp);
 	temp = NULL;
-	return (li);
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - */
