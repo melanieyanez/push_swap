@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
+/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:57:08 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/02/02 20:23:18 by melanieyane      ###   ########.fr       */
+/*   Updated: 2023/02/03 17:03:54 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ int	main(void)
 	reverse_rotate(&list_a);
 	printf("Reverse rotate\n");
 	print_list(list_a, list_b);
-	list_a = remove_top_list(list_a);
+	remove_top_list(&list_a);
 	printf("Remove top\n");
 	print_list(list_a, list_b);
 	list_a = remove_bottom_list(list_a);
 	printf("Remove bottom\n");
 	print_list(list_a, list_b);
-	list_a = clear_list(list_a);
-	list_b = clear_list(list_b);
+	clear_list(&list_a);
+	clear_list(&list_b);
 	printf("Clear\n");
 	print_list(list_a, list_b);
 	return (0);

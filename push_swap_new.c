@@ -6,7 +6,7 @@
 /*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:44:26 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/02/03 15:57:20 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/02/03 17:07:15 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,21 +105,17 @@ t_list	insert_bottom_list(t_list li, int x)
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /* Pour enlever un élément en début de liste */
-/* D'ou viennent les leaks ??? */
 
-t_list	remove_top_list(t_list li)
+void	remove_top_list(t_list *li)
 {
 	t_list	element;
 
-	element = malloc (sizeof(element));
-	if (element == NULL)
-		return (NULL);
-	if (is_empty_list(li))
-		return (li);
-	element = li->next;
-	free (li);
-	li = NULL;
-	return (element);
+	if (is_empty_list(*li))
+		return ;
+	element = *li;
+	*li = (*li)->next;
+	free (element);
+	element = NULL;
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -156,19 +152,15 @@ t_list	remove_bottom_list(t_list li)
 
 /* Pour libérer la liste */
 
-t_list	clear_list(t_list li)
+void	clear_list(t_list *li)
 {
-	if (is_empty_list(li))
+	if (is_empty_list(*li))
+		return ;
+	while (*li != NULL)
 	{
-		free (li);
-		return (NULL);
+		free(*li);
+		*li = (*li)->next;
 	}
-	while (li != NULL)
-	{
-		free (li);
-		li = remove_top_list(li);
-	}
-	return (li);
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - */
