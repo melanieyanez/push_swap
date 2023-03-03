@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:57:08 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/02/03 17:51:23 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:06:55 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,42 +16,23 @@ int	main(void)
 {
 	t_list	list_a;
 	t_list	list_b;
+	t_list	test;
 
 	list_a = new_list();
 	list_b = new_list();
-	printf("Création\n");
-	print_list(list_a, list_b);
-	insert_top_list(&list_a, 12);
 	insert_top_list(&list_a, 45);
+	insert_top_list(&list_a, 12);
 	insert_top_list(&list_a, 4);
-	insert_top_list(&list_b, 28);
-	insert_top_list(&list_b, 76);
-	insert_top_list(&list_b, 43);
-	printf("Top insertion\n");
+	printf("Listes originales\n");
 	print_list(list_a, list_b);
-	push(&list_a, &list_b);
-	printf("Push\n");
+	insert_whole_top_list(&list_a, remove_return_bottom_list(&list_a));
+	printf("Résultat remove bottom, add top\n");
 	print_list(list_a, list_b);
-	insert_bottom_list(&list_a, -1);
-	printf("Bottom insertion\n");
+	printf("Résultat remove return top\n");
+	test = remove_return_top_list(list_a, &list_a);
 	print_list(list_a, list_b);
-	swap(&list_a);
-	printf("Swap\n");
-	print_list(list_a, list_b);
-	rotate(&list_a);
-	printf("Rotate\n");
-	print_list(list_a, list_b);
-	reverse_rotate(&list_a);
-	printf("Reverse rotate\n");
-	print_list(list_a, list_b);
-	remove_top_list(&list_a);
-	printf("Remove top\n");
-	print_list(list_a, list_b);
-	remove_bottom_list(&list_a);
-	printf("Remove bottom\n");
-	print_list(list_a, list_b);
-	clear_list(&list_a);
-	clear_list(&list_b);
+	clear_list2(&list_a);
+	clear_list2(&list_b);
 	printf("Clear\n");
 	print_list(list_a, list_b);
 	return (0);

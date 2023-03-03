@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_new.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:44:26 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/02/03 17:50:44 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:08:19 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	print_list(t_list li_A, t_list li_B)
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-/* Pour ajouter un élément en début de liste */
+/* Pour ajouter un élément en début de liste en donnant la valeur de l'int */
 
 void	insert_top_list(t_list *li, int x)
 {
@@ -119,6 +119,23 @@ void	remove_top_list(t_list *li)
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
+/* Pour enlever un élément en début de liste et le retourner */
+
+t_list	remove_return_top_list(t_list li, t_list *li_ptr)
+{
+	t_list	element;
+
+	if (is_empty_list(*li_ptr))
+		return (NULL);
+	element = li;
+	element->next = NULL;
+	//*li_ptr = (*li_ptr)->next;
+	print_list(element, *li_ptr);
+	return (element);
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
 /* Pour enlever un élément en fin de liste */
 
 void	remove_bottom_list(t_list *li)
@@ -148,19 +165,30 @@ void	remove_bottom_list(t_list *li)
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-/* Pour libérer la liste */
+/* Pour libérer la liste, no leaks à 42 */
 
 void	clear_list(t_list *li)
 {
 	if (is_empty_list(*li))
 		return ;
-	while (*li != NULL)
+	while ((*li)->next != NULL)
 	{
 		free(*li);
 		*li = (*li)->next;
 	}
 }
 
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Pour libérer la liste, no leaks à la maison */
+
+void	clear_list2(t_list *li)
+{
+	if (is_empty_list(*li))
+		return ;
+	while (*li != NULL)
+		remove_top_list(li);
+}
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /* Pour récupérer la valeur du dernier élément */
@@ -193,4 +221,46 @@ int	list_length(t_list li)
 		}
 	}
 	return (size);
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Pour supprimer le dernier élément de la liste */
+/* mais retourner un pointeur sur celui-ci sans le free */
+
+t_list	remove_return_bottom_list(t_list *li)
+{
+	t_list	temp;
+	t_list	before;
+
+	temp = *li;
+	before = *li;
+	if (is_empty_list(*li))
+		return (NULL);
+	if ((*li)->next == NULL)
+	{
+		free(*li);
+		*li = NULL;
+		return (NULL);
+	}
+	while (temp->next != NULL)
+	{
+		before = temp;
+		temp = temp->next;
+	}
+	before->next = NULL;
+	return (temp);
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Pour ajouter un élément déjà existant au sommet de la liste */
+
+void	insert_whole_top_list(t_list *li, t_list to_add)
+{
+	if (is_empty_list(*li))
+		to_add->next = NULL;
+	else
+		to_add->next = *li;
+	*li = to_add;
 }

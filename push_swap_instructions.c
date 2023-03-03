@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_instructions.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 18:34:32 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/02/03 17:51:12 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:10:57 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
