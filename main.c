@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
+/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:57:08 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/03/01 13:06:55 by melanieyane      ###   ########.fr       */
+/*   Updated: 2023/03/06 17:20:08 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,13 @@ int	main(void)
 
 	list_a = new_list();
 	list_b = new_list();
-	insert_top_list(&list_a, 45);
-	insert_top_list(&list_a, 12);
-	insert_top_list(&list_a, 4);
+	insert_top_list(&list_a, 2);
+	insert_top_list(&list_a, 1);
+	insert_top_list(&list_a, 3);
 	printf("Listes originales\n");
 	print_list(list_a, list_b);
-	insert_whole_top_list(&list_a, remove_return_bottom_list(&list_a));
-	printf("Résultat remove bottom, add top\n");
-	print_list(list_a, list_b);
-	printf("Résultat remove return top\n");
-	test = remove_return_top_list(list_a, &list_a);
+	printf("Résultat sort 3\n");
+	sort_3(&list_a);
 	print_list(list_a, list_b);
 	clear_list2(&list_a);
 	clear_list2(&list_b);
