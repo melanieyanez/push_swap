@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_instructions.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
+/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 18:34:32 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/03/01 13:10:57 by melanieyane      ###   ########.fr       */
+/*   Updated: 2023/03/08 15:40:06 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,27 @@
 /* Prend le premier élément de la liste source */
 /* pour le mettre au début de la liste de destination */
 
-void	push(ListElement **li_dest, ListElement **li_src)
+void	push_a(ListElement **li_dest, ListElement **li_src)
 {
 	if (is_empty_list(*li_src))
 		return ;
 	insert_top_list(li_dest, (**li_src).value);
 	remove_top_list(li_src);
+	printf("pa\n");
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Prend le premier élément de la liste source */
+/* pour le mettre au début de la liste de destination */
+
+void	push_b(ListElement **li_dest, ListElement **li_src)
+{
+	if (is_empty_list(*li_src))
+		return ;
+	insert_top_list(li_dest, (**li_src).value);
+	remove_top_list(li_src);
+	printf("pb\n");
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -34,6 +49,7 @@ void	rotate(ListElement **li)
 {
 	insert_bottom_list(li, (**li).value);
 	remove_top_list(li);
+	printf("ra\n");
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -45,6 +61,7 @@ void	reverse_rotate(ListElement **li)
 {
 	insert_top_list(li, last_list_value(*li));
 	remove_bottom_list(li);
+	printf("rra\n");
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -63,4 +80,5 @@ void	swap(ListElement **li)
 	first->next = second->next;
 	second->next = first;
 	*li = second;
+	printf("sa\n");
 }

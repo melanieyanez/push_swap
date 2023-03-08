@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
+/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:49:33 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/03/01 13:05:36 by melanieyane      ###   ########.fr       */
+/*   Updated: 2023/03/08 16:31:20 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ void	insert_bottom_list(t_list *li, int x);
 void	remove_top_list(t_list *li);
 void	remove_bottom_list(t_list *li);
 void	clear_list2(t_list *li);
-void	push(ListElement **li_dest, ListElement **li_src);
+void	push_a(ListElement **li_dest, ListElement **li_src);
+void	push_b(ListElement **li_dest, ListElement **li_src);
 void	rotate(ListElement **li);
 void	reverse_rotate(ListElement **li);
 int		last_list_value(ListElement *li);
@@ -55,5 +56,9 @@ t_list	remove_return_bottom_list(t_list *li);
 void	insert_whole_top_list(t_list *li, t_list to_add);
 void	clear_list(t_list *li);
 t_list	remove_return_top_list(t_list li, t_list *li_ptr);
+void	sort_2(t_list *li);
+void	sort_3(t_list *li);
+void	sort_4(t_list *li_dest, t_list *li_src);
+void	sort_5(t_list *li_dest, t_list *li_src);
 
 #endif
