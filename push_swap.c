@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_new.c                                    :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:44:26 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/03/08 16:12:27 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/03/08 18:55:39 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -271,4 +271,24 @@ void	insert_whole_top_list(t_list *li, t_list to_add)
 	else
 		to_add->next = *li;
 	*li = to_add;
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Pour vérifier si la liste est déjà triée */
+
+int	is_sorted(t_list li)
+{
+	t_list	temp;
+
+	temp = li->next;
+	while (temp != NULL)
+	{
+		if (li->value > temp->value)
+			return (0);
+		li = li->next;
+		temp = temp->next;
+	}
+	free (temp);
+	return (1);
 }

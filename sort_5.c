@@ -6,7 +6,7 @@
 /*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 15:05:04 by myanez-p          #+#    #+#             */
-/*   Updated: 2023/03/08 17:07:21 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/03/08 18:57:46 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,33 @@ void	sort_5(t_list *li_dest, t_list *li_src)
 	third = second->next;
 	fourth = third->next;
 	last = fourth->next;
-	if (second->value < (*li_src)->value && second->value < third->value && second->value < fourth->value && second->value < last->value)
+	if (second->value < (*li_src)->value
+		&& second->value < third->value
+		&& second->value < fourth->value
+		&& second->value < last->value)
 	{
 		rotate(li_src);
 	}
-	if (third->value < (*li_src)->value && third->value < second->value && third->value < fourth->value && third->value < last->value)
+	if (third->value < (*li_src)->value
+		&& third->value < second->value
+		&& third->value < fourth->value
+		&& third->value < last->value)
 	{
 		rotate(li_src);
 		rotate(li_src);
 	}
-	if (fourth->value < (*li_src)->value && fourth->value < second->value && fourth->value < third->value && fourth->value < last->value)
+	if (fourth->value < (*li_src)->value
+		&& fourth->value < second->value
+		&& fourth->value < third->value
+		&& fourth->value < last->value)
 	{
 		reverse_rotate(li_src);
 		reverse_rotate(li_src);
 	}
-	if(last->value < second->value && last->value < third->value && last->value < fourth->value && last->value < (*li_src)->value)
+	if (last->value < second->value
+		&& last->value < third->value
+		&& last->value < fourth->value
+		&& last->value < (*li_src)->value)
 	{
 		reverse_rotate(li_src);
 	}

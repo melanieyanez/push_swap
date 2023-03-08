@@ -6,7 +6,7 @@
 /*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 13:58:03 by myanez-p          #+#    #+#             */
-/*   Updated: 2023/03/08 17:02:31 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/03/08 18:56:53 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,22 @@ void	sort_4(t_list *li_dest, t_list *li_src)
 	second = (*li_src)->next;
 	third = second->next;
 	last = third->next;
-	if (second->value < (*li_src)->value && second->value < third->value && second->value < last->value)
+	if (second->value < (*li_src)->value
+		&& second->value < third->value
+		&& second->value < last->value)
 	{
 		rotate(li_src);
 	}
-	if (third->value < (*li_src)->value && third->value < second->value && third->value < last->value)
+	if (third->value < (*li_src)->value
+		&& third->value < second->value
+		&& third->value < last->value)
 	{
 		rotate(li_src);
 		rotate(li_src);
 	}
-	if(last->value < second->value && last->value < third->value && last->value < (*li_src)->value)
+	if (last->value < second->value
+		&& last->value < third->value
+		&& last->value < (*li_src)->value)
 	{
 		reverse_rotate(li_src);
 	}
