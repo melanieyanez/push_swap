@@ -6,7 +6,7 @@
 /*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:49:33 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/03/08 18:43:57 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/03/10 17:45:28 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,8 @@ void	sort_3(t_list *li);
 void	sort_4(t_list *li_dest, t_list *li_src);
 void	sort_5(t_list *li_dest, t_list *li_src);
 int		is_sorted(t_list li);
+char	**arg_tab(int argc, char **argv);
+void	free_tab(char **args);
+int		check_number(char **args);
 
 #endif
