@@ -6,7 +6,7 @@
 /*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:44:26 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/03/08 18:55:39 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/03/13 17:52:29 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,13 +96,16 @@ void	insert_bottom_list(t_list *li, int x)
 	t_list	element;
 	t_list	temp;
 
-	element = malloc(sizeof(element));
+	element = malloc(sizeof(*element));
 	if (element == NULL)
 		return ;
 	element->value = x;
 	element->next = NULL;
-	//if (is_empty_list(*li))
-	//	return ;
+	if (is_empty_list(*li))
+	{
+		*li = element;
+		return ;
+	}
 	temp = *li;
 	while (temp->next != NULL)
 		temp = temp->next;
@@ -291,4 +294,18 @@ int	is_sorted(t_list li)
 	}
 	free (temp);
 	return (1);
+}
+
+/* Pour lancer le tri */
+
+void	sort_launcher(t_list *li_a, t_list *li_b)
+{
+	if (list_length(*li_a) == 2)
+		sort_2(li_a);
+	else if (list_length(*li_a) == 3)
+		sort_3(li_a);
+	else if (list_length(*li_a) == 4)
+		sort_4(li_b, li_a);
+	else if (list_length(*li_a) == 5)
+		sort_5(li_b, li_a);
 }

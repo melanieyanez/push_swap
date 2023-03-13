@@ -6,7 +6,7 @@
 /*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:49:33 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/03/10 17:45:28 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/03/13 17:51:42 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 /* Packages */
 
 # include <stdio.h>
+# include <unistd.h>
+# include <limits.h> 
 # include <stdlib.h>
 # include <stdlib.h>
 # include <string.h>
@@ -63,6 +65,16 @@ void	sort_5(t_list *li_dest, t_list *li_src);
 int		is_sorted(t_list li);
 char	**arg_tab(int argc, char **argv);
 void	free_tab(char **args);
+long	ft_atol(const char *str);
+long	*char_to_long(char **args);
 int		check_number(char **args);
+int		check_int(long *args);
+int		check_double(long *args);
+int		err_msg(char **args, long *args_i);
+size_t	ft_strlen(char const *str);
+char	*ft_strdup(const char *s1);
+char	**ft_split(char const *s, char c);
+int		tab_len(char **args);
+void	sort_launcher(t_list *li_a, t_list *li_b);
 
 #endif

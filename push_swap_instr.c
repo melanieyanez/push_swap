@@ -6,11 +6,13 @@
 /*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 18:34:32 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/03/08 15:40:06 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/03/13 13:07:21 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/* attention creer les fonctions avec list_b si besoin dans l'algo */
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
