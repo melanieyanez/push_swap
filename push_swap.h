@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:49:33 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/03/13 17:51:42 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/03/14 10:02:36 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ void	free_tab(char **args);
 long	ft_atol(const char *str);
 long	*char_to_long(char **args);
 int		check_number(char **args);
-int		check_int(long *args);
-int		check_double(long *args);
+int		check_int(char **args, long *args_i);
+int		check_double(char **args, long *args_i);
 int		err_msg(char **args, long *args_i);
 size_t	ft_strlen(char const *str);
 char	*ft_strdup(const char *s1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arg_mngt.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 18:20:01 by myanez-p          #+#    #+#             */
-/*   Updated: 2023/03/13 17:14:28 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/03/14 10:33:44 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ char	**arg_tab(int argc, char **argv)
 	{
 		i = 1;
 		args = malloc(argc * sizeof(char *));
+		if (args == NULL)
+			return (NULL);
 		while (i < argc)
 		{
 			args[i - 1] = ft_strdup(argv[i]);

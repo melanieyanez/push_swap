@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   err_mngt.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 12:07:02 by myanez-p          #+#    #+#             */
-/*   Updated: 2023/03/13 17:36:19 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/03/14 09:27:01 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ int	check_number(char **args)
 
 /* Pour checker que tous mes nombres rentrent dans un int */
 
-int	check_int(long *args)
+int	check_int(char **args, long *args_i)
 {
 	int	i;
 
 	i = 0;
-	while (args[i])
+	while (i < tab_len(args))
 	{
-		if (args[i] > INT_MAX || args[i] < INT_MIN)
+		if (args_i[i] > INT_MAX || args_i[i] < INT_MIN)
 			return (1);
 		i ++;
 	}
@@ -64,18 +64,18 @@ int	check_int(long *args)
 
 /* Pour checker qu'on n'a pas deux fois le même nombre */
 
-int	check_double(long *args)
+int	check_double(char **args, long *args_i)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (args[i])
+	while (i < tab_len(args))
 	{
 		j = i + 1;
-		while (args[j])
+		while (args_i[j])
 		{
-			if (args[i] == args[j])
+			if (args_i[i] == args_i[j])
 				return (1);
 			j ++;
 		}
@@ -89,8 +89,8 @@ int	check_double(long *args)
 int	err_msg(char **args, long *args_i)
 {
 	if (check_number(args) == 1
-		|| check_int(args_i) == 1
-		|| check_double(args_i) == 1)
+		|| check_int(args, args_i) == 1
+		|| check_double(args, args_i) == 1)
 	{
 		write(2, "Error\n", 6);
 		return (1);
@@ -108,7 +108,7 @@ int	main(int argc, char **argv)
 	i = 0;
 	test = arg_tab(argc, argv);
 	testi = char_to_long(test);
-	while (testi[i])
+	while (i < tab_len(test))
 	{
 		printf("arg %d: %ld\n", i, testi[i]);
 		i ++;

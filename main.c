@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:57:08 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/03/13 17:59:26 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/03/14 09:36:21 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,19 @@ int	main(int argc, char **argv)
 	t_list	list_a;
 	t_list	list_b;
 
-	list_a = new_list();
-	list_b = new_list();
+	if (argc == 1)
+		return (0);
 	args = arg_tab(argc, argv);
 	args_i = char_to_long(args);
-	i = 0;
-	if (argc <= 1 || err_msg(args, args_i) == 1)
+	if (tab_len(args) == 0 || err_msg(args, args_i) == 1)
 	{
 		free_tab(args);
 		free(args_i);
-		clear_list2(&list_a);
-		clear_list2(&list_b);
 		return (0);
 	}
+	list_a = new_list();
+	list_b = new_list();
+	i = 0;
 	while (i < tab_len(args))
 	{
 		insert_bottom_list(&list_a, args_i[i]);

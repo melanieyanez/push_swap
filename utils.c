@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 14:34:54 by myanez-p          #+#    #+#             */
-/*   Updated: 2023/03/13 14:42:21 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/03/14 10:35:57 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_strdup(const char *s1)
 	int		i;
 
 	result = malloc(sizeof(*s1) * (ft_strlen(s1) + 1));
-	if (!result)
+	if (result == NULL)
 		return (NULL);
 	i = 0;
 	while (s1[i] != '\0')
@@ -56,14 +56,16 @@ size_t	nb_substr(char const *s, char c)
 {
 	size_t	i;
 	size_t	nb;
+	size_t	size;
 
 	i = 0;
 	nb = 0;
-	if (ft_strlen(s) == 0)
+	size = ft_strlen(s);
+	if (size == 0)
 		return (0);
 	if (s[i] != c)
 		nb = 1;
-	while (i < ft_strlen(s) - 1)
+	while (i < size - 1)
 	{
 		if (s[i] == c && s[i + 1] != c)
 			nb ++;
@@ -104,7 +106,7 @@ char	**ft_split(char const *s, char c)
 	char	**result;
 
 	result = malloc((nb_substr(s, c) + 1) * sizeof(s));
-	if (!result)
+	if (result == NULL)
 		return (NULL);
 	i = 0;
 	j = 0;
