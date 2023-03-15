@@ -3,19 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   err_mngt.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
+/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 12:07:02 by myanez-p          #+#    #+#             */
-/*   Updated: 2023/03/14 09:27:01 by melanieyane      ###   ########.fr       */
+/*   Updated: 2023/03/15 11:46:19 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* Attention bien penser à free si il y a une erreur */
-/* Attention checker si il y a pas ou qu'un argument => error */
-/* Attention ajouter les protections des mallocs */
 /* Remplacer les conditions par la fct is_digit */
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /* Fonction pour checker si tous mes arguments sont des nombres */
 
@@ -46,6 +45,8 @@ int	check_number(char **args)
 	return (0);
 }
 
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
 /* Pour checker que tous mes nombres rentrent dans un int */
 
 int	check_int(char **args, long *args_i)
@@ -61,6 +62,8 @@ int	check_int(char **args, long *args_i)
 	}
 	return (0);
 }
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /* Pour checker qu'on n'a pas deux fois le même nombre */
 
@@ -83,6 +86,8 @@ int	check_double(char **args, long *args_i)
 	}
 	return (0);
 }
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /* Check toutes les erreurs potentielles et sort un message d'erreur si oui */
 

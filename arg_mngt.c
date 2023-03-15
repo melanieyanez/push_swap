@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   arg_mngt.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
+/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 18:20:01 by myanez-p          #+#    #+#             */
-/*   Updated: 2023/03/14 10:33:44 by melanieyane      ###   ########.fr       */
+/*   Updated: 2023/03/15 11:46:54 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /* Fonction pour stocker la valeur de mes arguments dans un tableau de char */
 
@@ -42,6 +44,8 @@ char	**arg_tab(int argc, char **argv)
 	return (args);
 }
 
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
 /* Fonction pour calculer le nombre d'éléments de mon tableau de char */
 
 int	tab_len(char **args)
@@ -53,6 +57,8 @@ int	tab_len(char **args)
 		size ++;
 	return (size);
 }
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /* Fonction pour libérer mon tableau d'arguments en char */
 
@@ -68,6 +74,8 @@ void	free_tab(char **args)
 	}
 	free(args);
 }
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /* Pour transformer une chaîne de char en long int */
 
@@ -99,6 +107,8 @@ long	ft_atol(const char *str)
 	}
 	return (sign * result);
 }
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /* Pour transformer le tableau de char en tableau de long */
 /* Pour pouvoir savoir si on est plus grand ou pas que le int min et max */

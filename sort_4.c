@@ -6,11 +6,13 @@
 /*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 13:58:03 by myanez-p          #+#    #+#             */
-/*   Updated: 2023/03/08 18:56:53 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/03/15 11:49:48 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/* Pour trier une pile de 4 éléments, il y a 23 options non-triées */
 
 void	sort_4(t_list *li_dest, t_list *li_src)
 {

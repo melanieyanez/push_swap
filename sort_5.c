@@ -6,11 +6,13 @@
 /*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 15:05:04 by myanez-p          #+#    #+#             */
-/*   Updated: 2023/03/08 18:57:46 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/03/15 11:50:23 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/* Pour trier une pile de 5 éléments, il y a 119 options non-triées */
 
 void	sort_5(t_list *li_dest, t_list *li_src)
 {

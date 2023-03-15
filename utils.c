@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
+/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 14:34:54 by myanez-p          #+#    #+#             */
-/*   Updated: 2023/03/14 10:35:57 by melanieyane      ###   ########.fr       */
+/*   Updated: 2023/03/15 11:52:36 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Calcule le nombre le nombre de char dans une string */
 
 size_t	ft_strlen(char const *str)
 {
@@ -21,6 +25,10 @@ size_t	ft_strlen(char const *str)
 		size ++;
 	return (size);
 }
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Copie une chaîne de char en allouant de la mémoire */
 
 char	*ft_strdup(const char *s1)
 {
@@ -39,6 +47,10 @@ char	*ft_strdup(const char *s1)
 	result[i] = '\0';
 	return (result);
 }
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Divise une chaîne de char en fonction d'un séparateur donné */
 
 void	free_malloc(char **result, size_t i)
 {

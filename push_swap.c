@@ -6,7 +6,7 @@
 /*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:44:26 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/03/13 17:52:29 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/03/15 17:50:30 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,23 +130,6 @@ void	remove_top_list(t_list *li)
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-/* Pour enlever un élément en début de liste et le retourner */
-
-t_list	remove_return_top_list(t_list li, t_list *li_ptr)
-{
-	t_list	element;
-
-	if (is_empty_list(*li_ptr))
-		return (NULL);
-	element = li;
-	element->next = NULL;
-	//*li_ptr = (*li_ptr)->next;
-	print_list(element, *li_ptr);
-	return (element);
-}
-
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
 /* Pour enlever un élément en fin de liste */
 
 void	remove_bottom_list(t_list *li)
@@ -176,24 +159,9 @@ void	remove_bottom_list(t_list *li)
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-/* Pour libérer la liste, no leaks à 42 */
+/* Pour libérer la liste */
 
 void	clear_list(t_list *li)
-{
-	if (is_empty_list(*li))
-		return ;
-	while ((*li)->next != NULL)
-	{
-		free(*li);
-		*li = (*li)->next;
-	}
-}
-
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-/* Pour libérer la liste, no leaks à la maison */
-
-void	clear_list2(t_list *li)
 {
 	if (is_empty_list(*li))
 		return ;
@@ -236,48 +204,6 @@ int	list_length(t_list li)
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-/* Pour supprimer le dernier élément de la liste */
-/* mais retourner un pointeur sur celui-ci sans le free */
-
-t_list	remove_return_bottom_list(t_list *li)
-{
-	t_list	temp;
-	t_list	before;
-
-	temp = *li;
-	before = *li;
-	if (is_empty_list(*li))
-		return (NULL);
-	if ((*li)->next == NULL)
-	{
-		free(*li);
-		*li = NULL;
-		return (NULL);
-	}
-	while (temp->next != NULL)
-	{
-		before = temp;
-		temp = temp->next;
-	}
-	before->next = NULL;
-	return (temp);
-}
-
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-/* Pour ajouter un élément déjà existant au sommet de la liste */
-
-void	insert_whole_top_list(t_list *li, t_list to_add)
-{
-	if (is_empty_list(*li))
-		to_add->next = NULL;
-	else
-		to_add->next = *li;
-	*li = to_add;
-}
-
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
 /* Pour vérifier si la liste est déjà triée */
 
 int	is_sorted(t_list li)
@@ -296,6 +222,8 @@ int	is_sorted(t_list li)
 	return (1);
 }
 
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
 /* Pour lancer le tri */
 
 void	sort_launcher(t_list *li_a, t_list *li_b)
@@ -308,4 +236,6 @@ void	sort_launcher(t_list *li_a, t_list *li_b)
 		sort_4(li_b, li_a);
 	else if (list_length(*li_a) == 5)
 		sort_5(li_b, li_a);
+	//else if (list_length(*li_a) > 5)
+	//	sort_big(li_b, li_a);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
+/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:57:08 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/03/14 09:36:21 by melanieyane      ###   ########.fr       */
+/*   Updated: 2023/03/15 11:42:52 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ int	main(int argc, char **argv)
 	//print_list(list_a, list_b);
 	free_tab(args);
 	free(args_i);
-	clear_list2(&list_a);
-	clear_list2(&list_b);
+	clear_list(&list_a);
+	clear_list(&list_b);
 	//printf("Clear\n\n");
 	//print_list(list_a, list_b);
 	return (0);
