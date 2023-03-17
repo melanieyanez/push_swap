@@ -3,18 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   sort_4.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 13:58:03 by myanez-p          #+#    #+#             */
-/*   Updated: 2023/03/15 11:49:48 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/03/17 18:43:40 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
 /* Pour trier une pile de 4 éléments, il y a 23 options non-triées */
 
-void	sort_4(t_list *li_dest, t_list *li_src)
+void	options4(t_list *li_src)
 {
 	t_list	last;
 	t_list	third;
@@ -26,22 +28,23 @@ void	sort_4(t_list *li_dest, t_list *li_src)
 	if (second->value < (*li_src)->value
 		&& second->value < third->value
 		&& second->value < last->value)
-	{
-		rotate(li_src);
-	}
+		rotate_a(li_src);
 	if (third->value < (*li_src)->value
 		&& third->value < second->value
 		&& third->value < last->value)
 	{
-		rotate(li_src);
-		rotate(li_src);
+		rotate_a(li_src);
+		rotate_a(li_src);
 	}
 	if (last->value < second->value
 		&& last->value < third->value
 		&& last->value < (*li_src)->value)
-	{
-		reverse_rotate(li_src);
-	}
+		reverse_rotate_a(li_src);
+}
+
+void	sort_4(t_list *li_dest, t_list *li_src)
+{
+	options4(li_src);
 	push_b(li_dest, li_src);
 	sort_3(li_src);
 	push_a(li_src, li_dest);
