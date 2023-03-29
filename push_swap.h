@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
+/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:49:33 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/03/17 18:23:42 by melanieyane      ###   ########.fr       */
+/*   Updated: 2023/03/29 16:34:14 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ void	sort_2(t_list *li);
 void	sort_3(t_list *li);
 void	sort_4(t_list *li_dest, t_list *li_src);
 void	sort_5(t_list *li_dest, t_list *li_src);
+void	sort_big(t_list *li_a, t_list *li_b, char **args);
 int		is_sorted(t_list li);
-void	sort_launcher(t_list *li_a, t_list *li_b);
+void	sort_launcher(t_list *li_a, t_list *li_b, char **args);
 
 #endif

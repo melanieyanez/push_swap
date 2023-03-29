@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   sort_big.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
+/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:37:50 by myanez-p          #+#    #+#             */
-/*   Updated: 2023/03/27 18:26:23 by melanieyane      ###   ########.fr       */
+/*   Updated: 2023/03/29 18:01:06 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Trie mon tableau de int */
 
 void	bubble_sort(char **args, long *args_i)
 {
@@ -42,6 +44,10 @@ void	bubble_sort(char **args, long *args_i)
 	}
 }
 
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Calcule le nombre de chunk optimal en fonction de la longueur de la liste */
+
 int	nbr_chunk(t_list *li)
 {
 	int	size;
@@ -55,8 +61,9 @@ int	nbr_chunk(t_list *li)
 	return (nbr_chunk);
 }
 
-/* scan depuis le haut pour trouver ma valeur min */
-/* pas t_list *li_a car je ne veux pas la modifier */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Scan ma liste depuis le haut pour trouver la valeur min */
 
 int	scan_from_top(t_list li_a, long val_max_chunk)
 {
@@ -78,7 +85,33 @@ int	scan_from_top(t_list li_a, long val_max_chunk)
 	return (-1);
 }
 
-/* scan depuis le bas pour trouver ma valeur la plus petite */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Scan ma liste depuis le haut pour trouver une valeur donnée */
+/* Problème car retourne -1 quand la valeur est en première position */
+
+int	scan_from_top_b(t_list li_b, long value)
+{
+	int	i;
+
+	i = 0;
+	while (li_b != NULL)
+	{
+		//printf("li_b->value: [%d]\nvalue: [%ld]\n", li_b->value, value);
+		if (li_b->value == value)
+		{
+			//value = li_b->value ;
+			return (i);
+		}
+		li_b = li_b->next;
+		i ++;
+	}
+	return (-1);
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Scan ma liste depuis le bas pour trouver la valeur min */
 
 int	scan_from_bottom(t_list li_a, long val_max_chunk)
 {
@@ -102,12 +135,55 @@ int	scan_from_bottom(t_list li_a, long val_max_chunk)
 	return (-1);
 }
 
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Scan ma liste depuis le bas pour trouver une valeur donnée */
+
+int	scan_from_bottom_b(t_list li_b, long value)
+{
+	int	i;
+
+	i = list_length(li_b);
+	while (li_b->next != NULL)
+		li_b = li_b->next;
+	while (li_b->prev != NULL)
+	{
+		if (li_b->value == value)
+		{
+			value = li_b->value ;
+			return (i);
+		}
+		li_b = li_b->prev;
+		i --;
+	}
+	return (-1);
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Renvoie le minimum d'un chunk donné */
+
+long min_chunk(long *args_sorted, int size, int act_chunk, int nbr_chunk)
+{
+	if (act_chunk == 1)
+		return (args_sorted[0]);
+	return (args_sorted[(act_chunk - 1) * (size / nbr_chunk)]);
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Renvoie le maximum d'un chunk donné */
+
 long	max_chunk(long *args_sorted, int size, int act_chunk, int nbr_chunk)
 {
 	if (act_chunk == nbr_chunk)
 		return (args_sorted[size - 1]);
 	return (args_sorted[act_chunk * (size / nbr_chunk) - 1]);
 }
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Pré-tri de la liste A en pushant vers B */
 
 void	a_to_b(t_list *li_a, t_list *li_b, long val_max_chunk)
 {
@@ -135,38 +211,89 @@ void	a_to_b(t_list *li_a, t_list *li_b, long val_max_chunk)
 	push_b(li_b, li_a);
 	if (list_length(*li_a) == 1)
 		push_b(li_b, li_a);
-	print_list(*li_a, *li_b);
+	//print_list(*li_a, *li_b);
 }
 
-void	b_to_a(t_list *li_a, t_list *li_b, long val_max_chunk)
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Tri de la liste B en pushant vers A */
+
+void	b_to_a(t_list *li_a, t_list *li_b, long val_min_chunk, long val_max_chunk)
 {
-	int	nb_r;
-	int	nb_rr;
+	long	value;
+	int		nb_r;
+	int		nb_rr;
 
-	nb_r = scan_from_top_a(*li_a, val_max_chunk);
-	nb_rr = list_length(*li_a) - scan_from_bottom(*li_a, val_max_chunk) + 1;
-	if (nb_r <= nb_rr)
-	{
-		while (nb_r)
-		{
-			rotate_a(li_a);
-			nb_r --;
-		}
-	}
-	else
-	{
-		while (nb_rr)
-		{
-			reverse_rotate_a(li_a);
-			nb_rr --;
-		}
-	}
-	push_b(li_b, li_a);
-	if (list_length(*li_a) == 1)
-		push_b(li_b, li_a);
+	value = val_max_chunk;
 	print_list(*li_a, *li_b);
+	while (value >= val_min_chunk)
+	{
+		if (scan_from_bottom_b(*li_b, value) != -1 && scan_from_top_b(*li_b, value) != -1)
+		{
+			nb_r = scan_from_top_b(*li_b, value);
+			nb_rr = list_length(*li_b) - scan_from_bottom_b(*li_b, value) + 1;
+			//printf("scan top 15: [%d]\nscan bottom 15: [%d]\n", scan_from_bottom_b(*li_b, 15), scan_from_top_b(*li_b, 15));
+			//printf("\n");
+			//printf("scan top 89: [%d]\nscan bottom 89: [%d]\n", scan_from_bottom_b(*li_b, 89), scan_from_top_b(*li_b, 89));
+			//printf("\n");
+			//printf("scan top 74: [%d]\nscan bottom 74: [%d]\n", scan_from_bottom_b(*li_b, 74), scan_from_top_b(*li_b, 74));
+			//printf("\n");
+			//printf("value act: [%ld]\nval min : [%ld]\nval max: [%ld]\n", value, val_min_chunk, val_max_chunk);
+			if (nb_r <= nb_rr)
+			{
+				while (nb_r)
+				{
+					rotate_b(li_b);
+					nb_r --;
+				}
+			}
+			else
+			{
+				while (nb_rr)
+				{
+					reverse_rotate_b(li_b);
+					nb_rr --;
+				}
+			}
+			push_a(li_a, li_b);
+			print_list(*li_a, *li_b);
+		}
+		value --;
+	}
 }
 
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Process du tri d'une grande liste de nombres */
+
+void	sort_big(t_list *li_a, t_list *li_b, char **args)
+{
+	long	*args_i_sorted;
+	int		act_chunk;
+	int		nb_chunk;
+
+	act_chunk = 1;
+	nb_chunk = nbr_chunk(li_a);
+	args_i_sorted = char_to_long(args);
+	bubble_sort(args, args_i_sorted);
+	while (act_chunk <= nb_chunk)
+	{
+		while (scan_from_top(*li_a, max_chunk(args_i_sorted, tab_len(args), act_chunk, nb_chunk)) != -1
+			&& scan_from_bottom(*li_a, max_chunk(args_i_sorted, tab_len(args), act_chunk, nb_chunk)) != -1)
+		{
+			a_to_b(li_a, li_b, max_chunk(args_i_sorted, tab_len(args), act_chunk, nb_chunk));
+		}
+		act_chunk++;
+	}
+	act_chunk--;
+	while (act_chunk >= 1)
+	{
+		b_to_a(li_a, li_b, min_chunk(args_i_sorted, tab_len(args), act_chunk, nb_chunk),  max_chunk(args_i_sorted, tab_len(args), act_chunk, nb_chunk));
+		act_chunk--;
+	}
+}
+
+/*
 int	main(int argc, char **argv)
 {
 	char	**args;
@@ -195,10 +322,12 @@ int	main(int argc, char **argv)
 		}
 		act_chunk++;
 	}
-	print_list(list_a, list_b);
-	//while (list_b != NULL)
-	//{
-	//	b_to_a();
-	//}
+	act_chunk--;
+	while (act_chunk >= 1)
+	{
+		b_to_a(&list_a, &list_b, min_chunk(args_i_sorted, tab_len(args), act_chunk, nb_chunk),  max_chunk(args_i_sorted, tab_len(args), act_chunk, nb_chunk));
+		act_chunk--;
+	}
 	return (0);
 }
+*/

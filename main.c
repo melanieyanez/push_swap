@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
+/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:57:08 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/03/17 18:58:28 by melanieyane      ###   ########.fr       */
+/*   Updated: 2023/03/29 16:41:28 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ int	main(int argc, char **argv)
 	t_list	list_a;
 	t_list	list_b;
 
-	(void)list_a;
-	(void)list_b;
 	if (argc == 1)
 		return (0);
 	args = arg_tab(argc, argv);
@@ -36,7 +34,7 @@ int	main(int argc, char **argv)
 	printf("Listes originales\n\n");
 	print_list(list_a, list_b);
 	if (is_sorted(list_a) == 0)
-		sort_launcher(&list_a, &list_b);
+		sort_launcher(&list_a, &list_b, args);
 	printf("Listes triées\n\n");
 	print_list(list_a, list_b);
 	free_tab(args);
