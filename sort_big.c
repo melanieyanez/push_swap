@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_big.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:37:50 by myanez-p          #+#    #+#             */
-/*   Updated: 2023/03/29 18:01:06 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/03/30 01:17:22 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,14 @@ int	nbr_chunk(t_list *li)
 	int	nbr_chunk;
 
 	size = list_length(*li);
-	if (size < 21)
+	if (size > 5 && size < 21)
 		nbr_chunk = 2;
-	if (size >= 21 && size <= 100)
+	if (size == 100)
 		nbr_chunk = 5;
+	if (size == 500)
+		nbr_chunk = 12;
+	else
+		nbr_chunk = (((size * 7) / 400) + 3);
 	return (nbr_chunk);
 }
 
@@ -67,43 +71,16 @@ int	nbr_chunk(t_list *li)
 
 int	scan_from_top(t_list li_a, long val_max_chunk)
 {
-	int	value;
 	int	i;
 
 	i = 0;
-	value = 0;
 	while (li_a != NULL)
 	{
 		if (li_a->value <= val_max_chunk)
 		{
-			value = li_a->value ;
 			return (i);
 		}
 		li_a = li_a->next;
-		i ++;
-	}
-	return (-1);
-}
-
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-/* Scan ma liste depuis le haut pour trouver une valeur donnée */
-/* Problème car retourne -1 quand la valeur est en première position */
-
-int	scan_from_top_b(t_list li_b, long value)
-{
-	int	i;
-
-	i = 0;
-	while (li_b != NULL)
-	{
-		//printf("li_b->value: [%d]\nvalue: [%ld]\n", li_b->value, value);
-		if (li_b->value == value)
-		{
-			//value = li_b->value ;
-			return (i);
-		}
-		li_b = li_b->next;
 		i ++;
 	}
 	return (-1);
@@ -115,18 +92,15 @@ int	scan_from_top_b(t_list li_b, long value)
 
 int	scan_from_bottom(t_list li_a, long val_max_chunk)
 {
-	int	value;
 	int	i;
 
 	i = list_length(li_a);
-	value = 0;
 	while (li_a->next != NULL)
 		li_a = li_a->next;
 	while (li_a->prev != NULL)
 	{
 		if (li_a->value <= val_max_chunk)
 		{
-			value = li_a->value ;
 			return (i);
 		}
 		li_a = li_a->prev;
@@ -137,24 +111,19 @@ int	scan_from_bottom(t_list li_a, long val_max_chunk)
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-/* Scan ma liste depuis le bas pour trouver une valeur donnée */
+/* Renvoie l'index de la valeur recherchée */
 
-int	scan_from_bottom_b(t_list li_b, long value)
+int	get_index(t_list li_b, long value)
 {
 	int	i;
 
-	i = list_length(li_b);
-	while (li_b->next != NULL)
-		li_b = li_b->next;
-	while (li_b->prev != NULL)
+	i = 0;
+	while (li_b != NULL)
 	{
 		if (li_b->value == value)
-		{
-			value = li_b->value ;
 			return (i);
-		}
-		li_b = li_b->prev;
-		i --;
+		li_b = li_b->next;
+		i ++;
 	}
 	return (-1);
 }
@@ -211,7 +180,6 @@ void	a_to_b(t_list *li_a, t_list *li_b, long val_max_chunk)
 	push_b(li_b, li_a);
 	if (list_length(*li_a) == 1)
 		push_b(li_b, li_a);
-	//print_list(*li_a, *li_b);
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -225,20 +193,12 @@ void	b_to_a(t_list *li_a, t_list *li_b, long val_min_chunk, long val_max_chunk)
 	int		nb_rr;
 
 	value = val_max_chunk;
-	print_list(*li_a, *li_b);
 	while (value >= val_min_chunk)
 	{
-		if (scan_from_bottom_b(*li_b, value) != -1 && scan_from_top_b(*li_b, value) != -1)
+		if (get_index(*li_b, value) != -1)
 		{
-			nb_r = scan_from_top_b(*li_b, value);
-			nb_rr = list_length(*li_b) - scan_from_bottom_b(*li_b, value) + 1;
-			//printf("scan top 15: [%d]\nscan bottom 15: [%d]\n", scan_from_bottom_b(*li_b, 15), scan_from_top_b(*li_b, 15));
-			//printf("\n");
-			//printf("scan top 89: [%d]\nscan bottom 89: [%d]\n", scan_from_bottom_b(*li_b, 89), scan_from_top_b(*li_b, 89));
-			//printf("\n");
-			//printf("scan top 74: [%d]\nscan bottom 74: [%d]\n", scan_from_bottom_b(*li_b, 74), scan_from_top_b(*li_b, 74));
-			//printf("\n");
-			//printf("value act: [%ld]\nval min : [%ld]\nval max: [%ld]\n", value, val_min_chunk, val_max_chunk);
+			nb_r = get_index(*li_b, value);
+			nb_rr = list_length(*li_b) - get_index(*li_b, value);
 			if (nb_r <= nb_rr)
 			{
 				while (nb_r)
@@ -256,7 +216,6 @@ void	b_to_a(t_list *li_a, t_list *li_b, long val_min_chunk, long val_max_chunk)
 				}
 			}
 			push_a(li_a, li_b);
-			print_list(*li_a, *li_b);
 		}
 		value --;
 	}
