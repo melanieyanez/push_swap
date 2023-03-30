@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_big.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
+/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:37:50 by myanez-p          #+#    #+#             */
-/*   Updated: 2023/03/30 01:17:22 by melanieyane      ###   ########.fr       */
+/*   Updated: 2023/03/30 12:52:11 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	scan_from_bottom(t_list li_a, long val_max_chunk)
 {
 	int	i;
 
-	i = list_length(li_a);
+	i = 1;
 	while (li_a->next != NULL)
 		li_a = li_a->next;
 	while (li_a->prev != NULL)
@@ -104,7 +104,7 @@ int	scan_from_bottom(t_list li_a, long val_max_chunk)
 			return (i);
 		}
 		li_a = li_a->prev;
-		i --;
+		i ++;
 	}
 	return (-1);
 }
@@ -159,27 +159,30 @@ void	a_to_b(t_list *li_a, t_list *li_b, long val_max_chunk)
 	int	nb_r;
 	int	nb_rr;
 
-	nb_r = scan_from_top(*li_a, val_max_chunk);
-	nb_rr = list_length(*li_a) - scan_from_bottom(*li_a, val_max_chunk) + 1;
-	if (nb_r <= nb_rr)
+	while (scan_from_top(*li_a, val_max_chunk) != -1
+		&& scan_from_bottom(*li_a, val_max_chunk) != -1)
 	{
-		while (nb_r)
+		nb_r = scan_from_top(*li_a, val_max_chunk);
+		nb_rr = scan_from_bottom(*li_a, val_max_chunk);
+		if (nb_r <= nb_rr)
 		{
-			rotate_a(li_a);
-			nb_r --;
+			while (nb_r)
+			{
+				rotate_a(li_a);
+				nb_r --;
+			}
 		}
-	}
-	else
-	{
-		while (nb_rr)
+		else
 		{
-			reverse_rotate_a(li_a);
-			nb_rr --;
+			while (nb_rr)
+			{
+				reverse_rotate_a(li_a);
+				nb_rr --;
+			}
 		}
+		push_b(li_b, li_a);
 	}
 	push_b(li_b, li_a);
-	if (list_length(*li_a) == 1)
-		push_b(li_b, li_a);
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -191,14 +194,16 @@ void	b_to_a(t_list *li_a, t_list *li_b, long val_min_chunk, long val_max_chunk)
 	long	value;
 	int		nb_r;
 	int		nb_rr;
+	int		index;
 
 	value = val_max_chunk;
 	while (value >= val_min_chunk)
 	{
-		if (get_index(*li_b, value) != -1)
+		index = get_index(*li_b, value);
+		if (index != -1)
 		{
-			nb_r = get_index(*li_b, value);
-			nb_rr = list_length(*li_b) - get_index(*li_b, value);
+			nb_r = index;
+			nb_rr = list_length(*li_b) - index;
 			if (nb_r <= nb_rr)
 			{
 				while (nb_r)
@@ -228,26 +233,24 @@ void	b_to_a(t_list *li_a, t_list *li_b, long val_min_chunk, long val_max_chunk)
 void	sort_big(t_list *li_a, t_list *li_b, char **args)
 {
 	long	*args_i_sorted;
+	int		tablen;
 	int		act_chunk;
 	int		nb_chunk;
 
 	act_chunk = 1;
 	nb_chunk = nbr_chunk(li_a);
 	args_i_sorted = char_to_long(args);
+	tablen = tab_len(args);
 	bubble_sort(args, args_i_sorted);
 	while (act_chunk <= nb_chunk)
 	{
-		while (scan_from_top(*li_a, max_chunk(args_i_sorted, tab_len(args), act_chunk, nb_chunk)) != -1
-			&& scan_from_bottom(*li_a, max_chunk(args_i_sorted, tab_len(args), act_chunk, nb_chunk)) != -1)
-		{
-			a_to_b(li_a, li_b, max_chunk(args_i_sorted, tab_len(args), act_chunk, nb_chunk));
-		}
+		a_to_b(li_a, li_b, max_chunk(args_i_sorted, tablen, act_chunk, nb_chunk));
 		act_chunk++;
 	}
 	act_chunk--;
 	while (act_chunk >= 1)
 	{
-		b_to_a(li_a, li_b, min_chunk(args_i_sorted, tab_len(args), act_chunk, nb_chunk),  max_chunk(args_i_sorted, tab_len(args), act_chunk, nb_chunk));
+		b_to_a(li_a, li_b, min_chunk(args_i_sorted, tablen, act_chunk, nb_chunk), max_chunk(args_i_sorted, tablen, act_chunk, nb_chunk));
 		act_chunk--;
 	}
 }
