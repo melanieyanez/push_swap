@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_mngt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
+/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 10:51:50 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/03/27 10:42:09 by melanieyane      ###   ########.fr       */
+/*   Updated: 2023/03/30 16:25:17 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	print_list(t_list li_A, t_list li_B)
 	{
 		while (li_A != NULL && li_B != NULL)
 		{
-			printf("[%d]		[%d]\n", li_A->value, li_B->value);
+			printf("[%d][%d]		[%d][%d]\n", li_A->index, li_A->value, li_B->index, li_B->value);
 			li_A = li_A->next;
 			li_B = li_B->next;
 		}
@@ -74,7 +74,7 @@ void	print_list(t_list li_A, t_list li_B)
 	{
 		while (li_A != NULL)
 		{
-			printf("[%d]		\n", li_A->value);
+			printf("[%d][%d]		\n", li_A->index, li_A->value);
 			li_A = li_A->next;
 		}
 	}
@@ -82,7 +82,7 @@ void	print_list(t_list li_A, t_list li_B)
 	{
 		while (li_B != NULL)
 		{
-			printf("		[%d]\n", li_B->value);
+			printf("		[%d][%d]\n", li_B->index, li_B->value);
 			li_B = li_B->next;
 		}
 	}
@@ -119,7 +119,9 @@ void	clear_list(t_list *li)
 	t_list	element;
 
 	if (*li == NULL)
+	{
 		return ;
+	}
 	while (*li != NULL)
 	{
 		element = *li;

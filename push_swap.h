@@ -6,7 +6,7 @@
 /*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:49:33 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/03/29 16:34:14 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/03/30 14:11:36 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 typedef struct ListElement
 {
 	int					value;
+	int					index;
 	struct ListElement	*next;
 	struct ListElement	*prev;
 }ListElement,	*t_list;
