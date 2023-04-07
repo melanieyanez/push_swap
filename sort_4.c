@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_4.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
+/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 13:58:03 by myanez-p          #+#    #+#             */
-/*   Updated: 2023/03/17 18:43:40 by melanieyane      ###   ########.fr       */
+/*   Updated: 2023/04/07 16:43:42 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 /* Pour trier une pile de 4 éléments, il y a 23 options non-triées */
 
-void	options4(t_list *li_src)
+void	more_options4(t_list *li_src)
 {
 	t_list	last;
 	t_list	third;
@@ -44,7 +44,7 @@ void	options4(t_list *li_src)
 
 void	sort_4(t_list *li_dest, t_list *li_src)
 {
-	options4(li_src);
+	more_options4(li_src);
 	push_b(li_dest, li_src);
 	sort_3(li_src);
 	push_a(li_src, li_dest);

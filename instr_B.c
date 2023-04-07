@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   instr_B.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
+/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 18:34:32 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/03/17 18:02:22 by melanieyane      ###   ########.fr       */
+/*   Updated: 2023/04/07 12:22:03 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,30 @@ void	swap_b(ListElement **li)
 		insert_top_list(li, second);
 	}
 	write(1, "sb\n", 3);
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Intervertit les deux premiers éléments des deux listes */
+
+void	swap_s(t_list *li_a, t_list *li_b)
+{
+	t_list	first;
+	t_list	second;
+
+	if (*li_a != NULL && list_length(*li_a) > 1)
+	{
+		first = remove_top_list(li_a);
+		second = remove_top_list(li_a);
+		insert_top_list(li_a, first);
+		insert_top_list(li_a, second);
+	}
+	if (*li_b != NULL && list_length(*li_b) > 1)
+	{
+		first = remove_top_list(li_b);
+		second = remove_top_list(li_b);
+		insert_top_list(li_b, first);
+		insert_top_list(li_b, second);
+	}
+	write(1, "ss\n", 3);
 }

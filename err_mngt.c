@@ -6,7 +6,7 @@
 /*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 12:07:02 by myanez-p          #+#    #+#             */
-/*   Updated: 2023/03/15 11:46:19 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/03/30 16:45:52 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,25 +102,3 @@ int	err_msg(char **args, long *args_i)
 	}
 	return (0);
 }
-
-/*
-int	main(int argc, char **argv)
-{
-	char	**test;
-	long	*testi;
-	int		i;
-
-	i = 0;
-	test = arg_tab(argc, argv);
-	testi = char_to_long(test);
-	while (i < tab_len(test))
-	{
-		printf("arg %d: %ld\n", i, testi[i]);
-		i ++;
-	}
-	printf("%d\n", err_msg(test, testi));
-	free_tab(test);
-	free(testi);
-	return (0);
-}
-*/

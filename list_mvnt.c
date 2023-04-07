@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_mvnt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
+/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 11:26:52 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/03/17 18:19:30 by melanieyane      ###   ########.fr       */
+/*   Updated: 2023/04/07 16:53:03 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,4 +116,3 @@ t_list	remove_top_list(t_list *li)
 		return (first_element);
 	}
 }
-

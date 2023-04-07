@@ -6,7 +6,7 @@
 /*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:49:33 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/03/30 14:11:36 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/04/07 17:43:54 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <stdlib.h>
 # include <stdlib.h>
 # include <string.h>
+# include "./libft/libft.h"
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
@@ -56,6 +57,7 @@ void	reverse_rotate_a(ListElement **li);
 void	reverse_rotate_b(ListElement **li);
 void	swap_a(ListElement **li);
 void	swap_b(ListElement **li);
+void	swap_s(t_list *li_a, t_list *li_b);
 t_list	new_list(char **args, long *args_i);
 t_list	new_element(int value);
 void	print_list(t_list li_A, t_list li_B);
@@ -69,8 +71,14 @@ void	sort_2(t_list *li);
 void	sort_3(t_list *li);
 void	sort_4(t_list *li_dest, t_list *li_src);
 void	sort_5(t_list *li_dest, t_list *li_src);
+long	min_chunk(int size, int act_chunk, int nbr_chunk);
+int		max_chunk(int size, int act_chunk, int nbr_chunk);
+int		scan_from_top(t_list li_a, long val_max_chunk);
+int		scan_from_bottom(t_list li_a, long val_max_chunk);
+int		get_index(t_list li_b, long value);
 void	sort_big(t_list *li_a, t_list *li_b, char **args);
 int		is_sorted(t_list li);
 void	sort_launcher(t_list *li_a, t_list *li_b, char **args);
+void	bubble_sort(char **args, long *args_i);
 
 #endif

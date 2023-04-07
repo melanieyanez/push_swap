@@ -6,7 +6,7 @@
 /*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 10:50:33 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/03/30 13:57:35 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/04/07 16:46:08 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,36 @@ void	sort_launcher(t_list *li_a, t_list *li_b, char **args)
 		sort_5(li_b, li_a);
 	else if (size > 5)
 		sort_big(li_a, li_b, args);
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Trie mon tableau de int */
+
+void	bubble_sort(char **args, long *args_i)
+{
+	int	i;
+	int	temp;
+	int	size;
+	int	swap;
+
+	size = tab_len(args);
+	swap = 1;
+	while (swap == 1)
+	{
+		swap = 0;
+		i = 0;
+		while (i < size - 1)
+		{
+			if (args_i[i] > args_i[i + 1])
+			{
+				temp = args_i[i];
+				args_i[i] = args_i[i + 1];
+				args_i[i + 1] = temp;
+				swap = 1;
+			}
+			else
+				i ++;
+		}
+	}
 }
