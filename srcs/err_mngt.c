@@ -6,13 +6,11 @@
 /*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 12:07:02 by myanez-p          #+#    #+#             */
-/*   Updated: 2023/03/30 16:45:52 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/04/08 12:09:15 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/* Remplacer les conditions par la fct is_digit */
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
@@ -29,14 +27,14 @@ int	check_number(char **args)
 		j = 0;
 		if (args[i][0] == '+' || args[i][0] == '-')
 		{
-			if (args[i][1] >= 48 && args[i][1] <= 57)
+			if (ft_isdigit(args[i][1]) == 1)
 				j ++;
 			else
 				return (1);
 		}
 		while (args[i][j])
 		{
-			if (args[i][j] < 48 || args[i][j] > 57)
+			if (ft_isdigit(args[i][j]) == 0)
 				return (1);
 			j ++;
 		}

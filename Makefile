@@ -6,39 +6,58 @@
 #    By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 15:47:00 by myanez-p          #+#    #+#              #
-#    Updated: 2023/04/07 17:54:17 by myanez-p         ###   ########.fr        #
+#    Updated: 2023/04/08 15:29:37 by myanez-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-SRCS = main.c instr_A.c instr_B.c list_mngt.c list_mvnt.c sort_2.c sort_3.c sort_4.c sort_5.c sort_big.c sort_big_tools.c sort_tools.c arg_mngt.c err_mngt.c
+# Dossiers
 
-OBJS = ${SRCS:.c=.o}
+SRCDIR = srcs
+OBJDIR = objs/
+HDRDIR = includes
 
+# Fichiers
+
+SRCS = $(shell find ${SRCDIR} -name '*.c')
+OBJS = ${SRCS:${SRCDIR}%.c=${OBJDIR}%.o}
+HEADERS = ${HDRDIR}
 NAME = push_swap
 
-RM = rm -f
+# Compilation
 
 GCC = GCC
-
 CFLAGS = -Wall -Wextra -Werror
 
-.c.o : 
-		${GCC} ${CFLAGS}  -g -c $< -o ${<:.c=.o} 
+# Commandes
 
-${NAME} : ${OBJS}
-		make -C libft
-		${GCC} -Llibft -lft -o ${NAME} ${OBJS}
+MKDIR = mkdir
+RM = rm -Rf
+
+# Règles
 
 all : ${NAME}
 
+${NAME} : ${OBJS}
+	@${GCC} ${CFLAGS} -I ${HEADERS} ${OBJS} -Llibft -lft -o ${NAME}
+
+${OBJDIR}%.o : ${SRCDIR}%.c
+	@${MKDIR} -p ${OBJDIR}
+	@if [ ! -f libft/libft.a ]; then make -C libft; fi
+	@${GCC} ${CFLAGS} -I ${HEADERS} -c $< -o $@
+
+# Nettoyage
+
 clean : 
-		make clean -C libft
-		${RM} ${OBJS}
+		@make clean -C libft
+		@${RM} ${OBJS}
+		@${RM} ${OBJDIR}
 
 fclean :	clean
-			make fclean -C libft
-			${RM} ${NAME}
+			@make fclean -C libft
+			@${RM} ${NAME}
+
+# Autres règles
 
 re : fclean all
 

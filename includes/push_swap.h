@@ -6,7 +6,7 @@
 /*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:49:33 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/04/07 17:43:54 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/04/08 15:07:37 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <stdlib.h>
 # include <stdlib.h>
 # include <string.h>
-# include "./libft/libft.h"
+# include "../libft/includes/libft.h"
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
@@ -41,9 +41,6 @@ typedef struct ListElement
 
 /* Prototypes des fonctions */
 
-size_t	ft_strlen(char const *str);
-char	*ft_strdup(const char *s1);
-char	**ft_split(char const *s, char c);
 char	**arg_tab(int argc, char **argv);
 int		tab_len(char **args);
 void	free_tab(char **args);

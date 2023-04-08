@@ -6,7 +6,7 @@
 /*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 10:51:50 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/04/07 16:42:39 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/04/08 12:10:21 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,37 +55,29 @@ t_list	new_element(int value)
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-/* Pour afficher la liste */
-/* Attention remplacer par mon printf */
-/* Enlever les deux dernières lignes pour le rendu */
+/* Pour afficher les listes */
 
 void	print_list(t_list li_A, t_list li_B)
 {	
-	if (li_A != NULL && li_B != NULL)
+	while (li_A || li_B)
 	{
-		while (li_A != NULL && li_B != NULL)
+		if (li_A)
 		{
-			printf("[%d]		    [%d]\n", li_A->value, li_B->value);
-			li_A = li_A->next;
-			li_B = li_B->next;
-		}
-	}
-	if (li_A != NULL && li_B == NULL)
-	{
-		while (li_A != NULL)
-		{
-			printf("[%d]		\n", li_A->value);
+			printf("[%d]\t", li_A->value);
 			li_A = li_A->next;
 		}
-	}
-	if (li_A == NULL && li_B != NULL)
-	{
-		while (li_B != NULL)
+		else
 		{
-			printf("		    [%d]\n", li_B->value);
+			printf("\t");
+		}
+		if (li_B)
+		{
+			printf("\t[%d]", li_B->value);
 			li_B = li_B->next;
 		}
+		printf("\n");
 	}
+	printf("\nA\t\tB\n\n");
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - */
