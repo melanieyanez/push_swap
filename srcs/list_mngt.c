@@ -6,7 +6,7 @@
 /*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 10:51:50 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/04/08 12:10:21 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/04/13 12:11:41 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,21 +63,21 @@ void	print_list(t_list li_A, t_list li_B)
 	{
 		if (li_A)
 		{
-			printf("[%d]\t", li_A->value);
+			ft_printf("[%d]\t", li_A->value);
 			li_A = li_A->next;
 		}
 		else
 		{
-			printf("\t");
+			ft_printf("\t");
 		}
 		if (li_B)
 		{
-			printf("\t[%d]", li_B->value);
+			ft_printf("\t[%d]", li_B->value);
 			li_B = li_B->next;
 		}
-		printf("\n");
+		ft_printf("\n");
 	}
-	printf("\nA\t\tB\n\n");
+	ft_printf("\nA\t\tB\n\n");
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - */
