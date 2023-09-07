@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_tools.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 10:50:33 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/04/07 16:46:08 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/09/07 17:20:37 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 
 /* Pour vérifier si la liste est déjà triée */
 
-int	is_sorted(t_list li)
+int	is_sorted(t_list *li)
 {
-	t_list	temp;
+	t_list	*temp;
 
 	temp = li->next;
 	while (temp != NULL)
@@ -36,7 +36,7 @@ int	is_sorted(t_list li)
 
 /* Pour lancer le tri */
 
-void	sort_launcher(t_list *li_a, t_list *li_b, char **args)
+void	sort_launcher(t_list **li_a, t_list **li_b, char **args)
 {
 	int	size;
 

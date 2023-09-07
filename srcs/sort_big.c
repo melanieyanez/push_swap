@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_big.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:37:50 by myanez-p          #+#    #+#             */
-/*   Updated: 2023/04/07 17:30:37 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/09/07 17:28:33 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 
 /* Normalise les différentes valeurs de la liste originale */
 
-void	normalize(long *args_i_sorted, t_list *li_a)
+void	normalize(long *args_i_sorted, t_list **li_a)
 {
 	int		i;
 	int		j;
 	int		list_len;
-	t_list	current_element;
+	t_list	*current_element;
 
 	i = 0;
 	list_len = list_length(*li_a);
@@ -46,7 +46,7 @@ void	normalize(long *args_i_sorted, t_list *li_a)
 
 /* Calcule le nombre de chunk optimal en fonction de la longueur de la liste */
 
-int	nbr_chunk(t_list *li)
+int	nbr_chunk(t_list **li)
 {
 	int	size;
 
@@ -65,7 +65,7 @@ int	nbr_chunk(t_list *li)
 
 /* Pré-tri de la liste A en pushant vers B */
 
-void	a_to_b(t_list *li_a, t_list *li_b, int val_max_chunk)
+void	a_to_b(t_list **li_a, t_list **li_b, int val_max_chunk)
 {
 	int	nb_r;
 	int	nb_rr;
@@ -92,7 +92,7 @@ void	a_to_b(t_list *li_a, t_list *li_b, int val_max_chunk)
 
 /* Tri de la liste B en pushant vers A */
 
-void	b_to_a(t_list *li_a, t_list *li_b, long val_min, long val_max)
+void	b_to_a(t_list **li_a, t_list **li_b, long val_min, long val_max)
 {
 	long	value;
 	int		nb_r;
@@ -125,7 +125,7 @@ void	b_to_a(t_list *li_a, t_list *li_b, long val_min, long val_max)
 
 /* Process du tri d'une grande liste de nombres */
 
-void	sort_big(t_list *li_a, t_list *li_b, char **args)
+void	sort_big(t_list **li_a, t_list **li_b, char **args)
 {
 	long	*args_i_sorted;
 	int		len;

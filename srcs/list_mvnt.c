@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_mvnt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 11:26:52 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/04/07 16:53:03 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/09/07 17:06:06 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 
 /* Retourne un pointeur sur le dernier élément de la liste */
 
-t_list	last_list_element(t_list *li)
+t_list	*last_list_element(t_list **li)
 {
-	t_list	element;
+	t_list	*element;
 
 	if (li == NULL || *li == NULL)
 		return (NULL);
@@ -32,9 +32,9 @@ t_list	last_list_element(t_list *li)
 
 /* Ajoute un élément à la fin de la liste */
 
-void	insert_bottom_list(t_list *li, t_list new_element)
+void	insert_bottom_list(t_list **li, t_list *new_element)
 {
-	t_list	last_element;
+	t_list	*last_element;
 
 	last_element = last_list_element(li);
 	if (li != NULL)
@@ -53,9 +53,9 @@ void	insert_bottom_list(t_list *li, t_list new_element)
 
 /* Supprime le dernier élément de la liste et renvoie un pointeur dessus */
 
-t_list	remove_bottom_list(t_list *li)
+t_list	*remove_bottom_list(t_list **li)
 {
-	t_list	last_element;
+	t_list	*last_element;
 
 	if (*li == NULL)
 		return (NULL);
@@ -78,7 +78,7 @@ t_list	remove_bottom_list(t_list *li)
 
 /* Ajoute un élément au début de la liste */
 
-void	insert_top_list(t_list *li, t_list new_element)
+void	insert_top_list(t_list **li, t_list *new_element)
 {
 	if (li != NULL)
 	{
@@ -95,9 +95,9 @@ void	insert_top_list(t_list *li, t_list new_element)
 
 /* Supprime le dernier élément de la liste et renvoie un pointeur dessus */
 
-t_list	remove_top_list(t_list *li)
+t_list	*remove_top_list(t_list **li)
 {
-	t_list	first_element;
+	t_list	*first_element;
 
 	if (*li == NULL)
 		return (NULL);

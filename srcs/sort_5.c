@@ -6,7 +6,7 @@
 /*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 15:05:04 by myanez-p          #+#    #+#             */
-/*   Updated: 2023/03/17 18:44:09 by melanieyane      ###   ########.fr       */
+/*   Updated: 2023/09/07 17:25:22 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 
 /* Pour trier une pile de 5 éléments, il y a 119 options non-triées */
 
-void	more_options5(t_list *li_src)
+void	more_options5(t_list **li_src)
 {
-	t_list	last;
-	t_list	fourth;
-	t_list	third;
-	t_list	second;
+	t_list	*last;
+	t_list	*fourth;
+	t_list	*third;
+	t_list	*second;
 
 	second = (*li_src)->next;
 	third = second->next;
@@ -45,12 +45,12 @@ void	more_options5(t_list *li_src)
 	}
 }
 
-void	sort_5(t_list *li_dest, t_list *li_src)
+void	sort_5(t_list **li_dest, t_list **li_src)
 {
-	t_list	last;
-	t_list	fourth;
-	t_list	third;
-	t_list	second;
+	t_list	*last;
+	t_list	*fourth;
+	t_list	*third;
+	t_list	*second;
 
 	second = (*li_src)->next;
 	third = second->next;

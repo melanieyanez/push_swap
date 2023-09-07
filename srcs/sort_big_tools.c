@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_big_tools.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 16:39:54 by myanez-p          #+#    #+#             */
-/*   Updated: 2023/04/07 16:49:20 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/09/07 17:27:02 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 /* Renvoie le minimum d'un chunk donné */
 
-long	min_chunk(int size, int act_chunk, int nbr_chunk)
+int	min_chunk(int size, int act_chunk, int nbr_chunk)
 {
 	if (act_chunk == 1)
 		return (0);
@@ -38,7 +38,7 @@ int	max_chunk(int size, int act_chunk, int nbr_chunk)
 
 /* Scan ma liste depuis le haut pour trouver la valeur min */
 
-int	scan_from_top(t_list li_a, long val_max_chunk)
+int	scan_from_top(t_list *li_a, long val_max_chunk)
 {
 	int	i;
 
@@ -59,11 +59,11 @@ int	scan_from_top(t_list li_a, long val_max_chunk)
 
 /* Scan ma liste depuis le bas pour trouver la valeur min */
 
-int	scan_from_bottom(t_list li_a, long val_max_chunk)
+int	scan_from_bottom(t_list *li_a, long val_max_chunk)
 {
 	int		i;
 	int		list_len;
-	t_list	current_element;
+	t_list	*current_element;
 
 	i = 1;
 	list_len = list_length(li_a);
@@ -87,7 +87,7 @@ int	scan_from_bottom(t_list li_a, long val_max_chunk)
 
 /* Renvoie l'index de la valeur recherchée */
 
-int	get_index(t_list li_b, long value)
+int	get_index(t_list *li_b, long value)
 {
 	int	i;
 

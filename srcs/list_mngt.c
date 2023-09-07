@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_mngt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 10:51:50 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/04/13 12:11:41 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/09/07 17:05:09 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 
 /* Création d'une nouvelle structure */
 
-t_list	new_list(char **args, long *args_i)
+t_list	*new_list(char **args, long *args_i)
 {
-	t_list	current_element;
-	t_list	first_element;
+	t_list	*current_element;
+	t_list	*first_element;
 	int		size;
 
 	first_element = NULL;
@@ -40,9 +40,9 @@ t_list	new_list(char **args, long *args_i)
 
 /* Création d'un nouvel élément */
 
-t_list	new_element(int value)
+t_list	*new_element(int value)
 {
-	t_list	element;
+	t_list	*element;
 
 	element = malloc(sizeof(*element));
 	if (element == NULL)
@@ -57,7 +57,7 @@ t_list	new_element(int value)
 
 /* Pour afficher les listes */
 
-void	print_list(t_list li_A, t_list li_B)
+void	print_list(t_list *li_A, t_list *li_B)
 {	
 	while (li_A || li_B)
 	{
@@ -84,7 +84,7 @@ void	print_list(t_list li_A, t_list li_B)
 
 /* Pour connaître le nombre d'éléments de la liste */
 
-int	list_length(t_list li)
+int	list_length(t_list *li)
 {
 	int	size;
 
@@ -104,9 +104,9 @@ int	list_length(t_list li)
 
 /* Pour libérer la liste */
 
-void	clear_list(t_list *li)
+void	clear_list(t_list **li)
 {
-	t_list	element;
+	t_list	*element;
 
 	if (*li == NULL)
 	{
