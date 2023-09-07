@@ -6,7 +6,7 @@
 #    By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 15:47:00 by myanez-p          #+#    #+#              #
-#    Updated: 2023/09/07 12:08:39 by melanieyane      ###   ########.fr        #
+#    Updated: 2023/09/07 12:20:39 by melanieyane      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,11 +53,13 @@ ${OBJDIR}/%.o : ${SRCDIR}/%.c
 # Nettoyage
 
 clean : 
+		@echo "Cleaning...\n"
 		@make clean -C libft
 		@${RM} ${OBJS}
 		@${RM} ${OBJDIR}
 
 fclean :	clean
+			@echo "Full cleaning...\n"
 			@make fclean -C libft
 			@${RM} ${NAME}
 
