@@ -6,7 +6,7 @@
 #    By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 15:47:00 by myanez-p          #+#    #+#              #
-#    Updated: 2023/09/07 12:20:39 by melanieyane      ###   ########.fr        #
+#    Updated: 2023/09/07 12:31:02 by melanieyane      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,8 +39,10 @@ RM = rm -Rf
 all : ${NAME}
 
 ${NAME} : ${OBJS}
-	@echo "\nCompiling the libft library..."
-	@if [ ! -f libft/libft.a ]; then make -C libft; fi
+	@if [ ! -f libft/libft.a ]; then \
+		echo "\nCompiling the libft library...\n"; \
+		make -C libft; \
+	fi
 	@echo "\nCompiling push_swap executable..."
 	@${GCC} ${CFLAGS} -I ${HEADERS} ${OBJS} -Llibft -lft -o ${NAME}
 	@echo "\nAll done!"
