@@ -6,7 +6,7 @@
 /*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 16:39:54 by myanez-p          #+#    #+#             */
-/*   Updated: 2023/09/07 17:27:02 by melanieyane      ###   ########.fr       */
+/*   Updated: 2023/09/07 19:20:53 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	max_chunk(int size, int act_chunk, int nbr_chunk)
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-/* Scan ma liste depuis le haut pour trouver la valeur min */
+/* Scan ma liste depuis le haut pour trouver une valeur du chunk */
 
 int	scan_from_top(t_list *li_a, long val_max_chunk)
 {
@@ -57,7 +57,7 @@ int	scan_from_top(t_list *li_a, long val_max_chunk)
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-/* Scan ma liste depuis le bas pour trouver la valeur min */
+/* Scan ma liste depuis le bas pour trouver une valeur contenue dans le chunk */
 
 int	scan_from_bottom(t_list *li_a, long val_max_chunk)
 {
