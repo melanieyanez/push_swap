@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+         #
+#    By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 15:47:00 by myanez-p          #+#    #+#              #
-#    Updated: 2023/04/08 15:29:37 by myanez-p         ###   ########.fr        #
+#    Updated: 2023/09/07 12:08:39 by melanieyane      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 # Dossiers
 
 SRCDIR = srcs
-OBJDIR = objs/
+OBJDIR = objs
 HDRDIR = includes
 
 # Fichiers
@@ -39,11 +39,15 @@ RM = rm -Rf
 all : ${NAME}
 
 ${NAME} : ${OBJS}
-	@${GCC} ${CFLAGS} -I ${HEADERS} ${OBJS} -Llibft -lft -o ${NAME}
-
-${OBJDIR}%.o : ${SRCDIR}%.c
-	@${MKDIR} -p ${OBJDIR}
+	@echo "\nCompiling the libft library..."
 	@if [ ! -f libft/libft.a ]; then make -C libft; fi
+	@echo "\nCompiling push_swap executable..."
+	@${GCC} ${CFLAGS} -I ${HEADERS} ${OBJS} -Llibft -lft -o ${NAME}
+	@echo "\nAll done!"
+
+${OBJDIR}/%.o : ${SRCDIR}/%.c
+	@${MKDIR} -p ${OBJDIR}
+	@echo "Compiling $< into ${@F}..."
 	@${GCC} ${CFLAGS} -I ${HEADERS} -c $< -o $@
 
 # Nettoyage
